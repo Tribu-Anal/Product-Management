@@ -1,6 +1,6 @@
 var app = angular.module('ProductsApp');
 
-app.controller('mainCtrl', function($scope) {
+app.controller('ProductCtrl', function($scope) {
     $scope.products = [];
     
     $scope.insert = function(name) {

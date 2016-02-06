@@ -1,1 +1,1 @@
-angular.module('ProductsApp', []);
+angular.module('ProductsApp', ['ngAnimate']);

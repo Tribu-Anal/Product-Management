@@ -1,0 +1,15 @@
+input[type="text"] {
+    height: 40px;
+    color: #fff;
+    font-size: 24px;
+    font-weight: bolder;
+    background: transparent;
+    border: none;
+    outline: none;
+    border-bottom: 2px solid #fff;
+    margin-top: 30%;
+}
+
+input[type="text"]::-webkit-input-placeholder {
+    color: white;
+}

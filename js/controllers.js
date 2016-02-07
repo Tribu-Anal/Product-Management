@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 var app = angular.module('ProductsApp');
 
 app.controller('editmodeController', function($scope) {

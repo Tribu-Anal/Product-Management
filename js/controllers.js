@@ -1,6 +1,9 @@
+<<<<<<< HEAD
 var app = angular.module('ProductsApp');
 
-app.controller('ProductCtrl', function($scope) {
+app.controller('editmodeController', function($scope) {
+    var ctrl = this;
+    
     $scope.products = [];
     
     $scope.insert = function(name) {
@@ -10,4 +13,7 @@ app.controller('ProductCtrl', function($scope) {
     $scope.delete = function(index) {
       $scope.products.splice(index, 1);  
     };
+    
+    ctrl.save = function(){
+        $scope.$parent.main.data.visible=false;
 });

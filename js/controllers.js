@@ -13,6 +13,11 @@ app.controller('editmodeController', ['$scope', function($scope) {
 
 app.controller('ProductCtrl', [ '$scope', 'Product',  ($scope, Product) => {
     $scope.products = Product.query();
+    $scope.showPrompt = false;
+    
+    $scope.saveProducts = () => {
+        Product.save($scope.products);
+    };
 
     $scope.insert = function(name) {
         $scope.products.push({name: name});

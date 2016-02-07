@@ -16,7 +16,7 @@
 
         <link rel="stylesheet" href="css/style.css">
     </head>
-    <body ng-app="ProductsApp">
+    <body ng-app="ProductsApp" ng-controller="ProductCtrl">
         
         <!--Page Content-->
         <div class="row full-height">
@@ -41,40 +41,28 @@
                                 </div>
                             </li>
                             <!--If you want to add more products, make sure it goes here! :^)-->
-                            <li class="col-xs-2">
-                                <div class="list-group-item pull-left">
-                                    <strong> 1 </strong>
-                                </div>
-                            </li>
-                            <li class="active col-xs-10">
-                                <a href="#" id="item" class="list-group-item">Nintendo Wii U
-                                    <div class="col-xs-1 pull-right">
-                                        <button class="trashcan btn btn-info btn-xs" type="button">
-                                            <i class="glyphicon glyphicon-trash"></i>
-                                        </button>
+                            <div ng-repeat="product in products">
+                                <li class="col-xs-2">
+                                    <div class="list-group-item pull-left">
+                                        <strong> {{product.id}} </strong>
                                     </div>
-                                </a>
-                            </li>
-                            <li class="col-xs-2">
-                                <div class="list-group-item pull-left">
-                                    <strong> 2 </strong>
-                                </div>
-                            </li>
-                            <li class="col-xs-10">
-                                <a href="#" id="item" class="list-group-item">Sony Playstation 4
-                                    <div class="col-xs-1 pull-right">
-                                        <button class="trashcan btn btn-info btn-xs" type="button">
-                                            <i class="glyphicon glyphicon-trash"></i>
-                                        </button>
-                                    </div>
-                                </a>
-                            </li>
+                                </li>
+                                <li class="active col-xs-10">
+                                    <a href="#" id="item" class="list-group-item">{{product.name}}
+                                        <div class="col-xs-1 pull-right">
+                                            <button class="trashcan btn btn-info btn-xs" type="button">
+                                                <i class="glyphicon glyphicon-trash" ng-click="delete($index)"></i>
+                                            </button>
+                                        </div>
+                                    </a>
+                                </li>
+                            </div>
 
                         </ul>
                     </div>
                 </div>
                 <div class="input-group">
-                    <input type="text" placeholder="Escribir Producto..."/>
+                    <input type="text" placeholder="Escribir Producto..." ng-model="name" ng-keyup="$event.which === 13 && insert(name)"/>
                     <!--If button wanted <button class="btn btn-default" type="button">Insertar</button> -->
                 </div>
 

@@ -12,7 +12,7 @@ app.controller('editmodeController', ['$scope', function($scope) {
 }]);
 
 app.controller('ProductCtrl', [ '$scope', 'Product',  ($scope, Product) => {
-    $scope.products = [];
+    $scope.products = Product.query();
 
     $scope.insert = function(name) {
         $scope.products.push({name: name});

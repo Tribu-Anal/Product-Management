@@ -1,8 +1,6 @@
 var app = angular.module('ProductsApp');
 
-app.controller('editmodeController', function($scope) {
-    var ctrl = this;
-    
+app.controller('ProductController', function($scope) {    
     $scope.products = 
         [
             {id: 1, name: "Nintendo Wii U"},
@@ -16,8 +14,11 @@ app.controller('editmodeController', function($scope) {
     $scope.delete = function(index) {
       $scope.products.splice(index, 1);  
     };
-    
+});
+
+app.controller('editmodeController',['$scope',function($scope){
+    var ctrl = this;
     ctrl.save = function(){
         $scope.$parent.main.data.visible=false;
-}
-});
+    }
+}]);

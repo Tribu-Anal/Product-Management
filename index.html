@@ -62,13 +62,15 @@
                     </div>
                 </div>
                 <div class="input-group">
-                    <input type="text" placeholder="Escribir Producto..." ng-model="name" ng-keyup="$event.which === 13 && insert(name)"/>
+                    <input type="text" placeholder="Ingrese Producto..." ng-model="name" ng-keyup="$event.which === 13 && insert(name)"/>
                     <!--If button wanted <button class="btn btn-default" type="button">Insertar</button> -->
                 </div>
 
             </div>
         </div>
-        <i id="save-icon" class="glyphicon glyphicon-floppy-disk" ng-click="saveProducts()"></i>
+        
+        <i id="save-icon" class="glyphicon glyphicon-floppy-disk" ng-click="saveProducts(); showPrompt = true;"></i>
+        
         <!--jQuery-->
         <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
         

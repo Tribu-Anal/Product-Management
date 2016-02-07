@@ -6,7 +6,7 @@ app.controller('editmodeController', ['$scope', function($scope) {
     var ctrl = this;
     
     ctrl.save = function () {
-        $scope.$parent.main.data.visible = false;
+        $scope.$parent.product.editMode = false;
     };
     
 }]);
@@ -41,5 +41,9 @@ app.controller('ProductCtrl', [ '$scope', 'Product', ($scope, Product) => {
 
     $scope.delete = function(index) {
         $scope.products.splice(index, 1);  
+    };
+    
+    $scope.edit=function(producto){
+      producto.editMode = true;  
     };
 }]);

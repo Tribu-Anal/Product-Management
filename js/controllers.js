@@ -1,3 +1,5 @@
+'use strict';
+
 var app = angular.module('ProductsApp');
 
 app.controller('editmodeController', ['$scope', function($scope) {
@@ -9,7 +11,7 @@ app.controller('editmodeController', ['$scope', function($scope) {
     
 }]);
 
-app.controller('ProductCtrl', function($scope) {
+app.controller('ProductCtrl', [ '$scope', 'Product',  ($scope, Product) => {
     $scope.products = [];
 
     $scope.insert = function(name) {
@@ -19,4 +21,4 @@ app.controller('ProductCtrl', function($scope) {
     $scope.delete = function(index) {
         $scope.products.splice(index, 1);  
     };
-});
+}]);

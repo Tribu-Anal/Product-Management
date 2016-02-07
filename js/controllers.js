@@ -11,7 +11,7 @@ app.controller('editmodeController', ['$scope', function($scope) {
     
 }]);
 
-app.controller('ProductCtrl', [ '$scope', 'Product', '$http',  ($scope, Product, $http) => {
+app.controller('ProductCtrl', [ '$scope', 'Product', ($scope, Product) => {
     $scope.products = Product.query( () => {
         
         let genId = () => {
@@ -26,9 +26,14 @@ app.controller('ProductCtrl', [ '$scope', 'Product', '$http',  ($scope, Product,
         $scope.insert = function(name) {
             $scope.products.push( { id: $scope.products.length > 0 ? genId() : 1, name: name } );
         };
+        
+        $scope.updateProduct = (name, $index) => {
+            $scope.products[$index].name = name;
+        };
     });
     
     $scope.showPrompt = false;
+    $scope.editMode = false;
     
     $scope.saveProducts = () => {
         Product.save($scope.products);

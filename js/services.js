@@ -1,5 +1,5 @@
 var app = angular.module('ProductsApp');
 
 app.factory('Product', ($resource) => {
-    return $resource('../res/products.json'); //Temporary resource
+    return $resource('http://localhost:8080/api'); //Temporary url
 });

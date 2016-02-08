@@ -6,18 +6,27 @@ html, body, .full-height {
     border: none;
 }
 
-#save-icon {
+.extra-icon {
     position: absolute;
     font-size: 50px;
     opacity: 0.2;
     margin-top: 20px;
     right: 1.5%;
     cursor: pointer;
-    transition: all 0.4s;
+    padding-bottom: 5px;
 }
 
-#save-icon:hover {
+.save {
+    margin-right: 70px;
+}
+
+.help {
+    
+}
+
+.extra-icon:hover {
     opacity: 1;
+    border-bottom: 3px solid #fff;
 }
 
 input[type="text"] {
@@ -76,6 +85,11 @@ input[type="text"] {
   border: 2px solid #fff;
   margin-top: 5px;
 }
+
+.list-group-item.pull-left {
+    cursor: pointer;
+}
+
 .input-group{
   margin: 0 auto;
 }

@@ -46,6 +46,5 @@ app.controller('ProductCtrl', [ '$scope', 'Product', ($scope, Product) => {
     
     $scope.edit=function(producto){
         producto.editMode = true;
-        $('#'+producto.id+' :input').focus();
     };
 }]);

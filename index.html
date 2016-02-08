@@ -12,6 +12,9 @@
         <!--Bootstrap Theme-->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
         
+        <!--Google Fonts-->
+        <link href='https://fonts.googleapis.com/css?family=Roboto:400,700|Ubuntu:400,700|Candal|Nunito:400,700' rel='stylesheet' type='text/css'>
+        
         <link rel="stylesheet" href="css/style.css">
     </head>
     <body ng-app="ProductsApp" ng-controller="ProductCtrl">
@@ -40,7 +43,7 @@
                             </li>
                             <!--If you want to add more products, make sure it goes here! :^)-->
                             <div ng-repeat="product in products">
-                                <li class="col-xs-2">
+                                <li class="col-xs-2" ng-click="edit(product)">
                                     <div class="list-group-item pull-left">
                                         <strong> {{product.id}} </strong>
                                     </div>
@@ -68,8 +71,11 @@
             </div>
         </div>
         
-        <i id="save-icon" class="glyphicon glyphicon-floppy-disk" ng-click="saveProducts(); showPrompt = true;"></i>
-       
+        <i class="glyphicon glyphicon-floppy-disk extra-icon save" ng-click="saveProducts(); triggerSavePrompt();"></i>
+        <i class="glyphicon glyphicon-question-sign extra-icon help" ng-click="triggerHelpPrompt()"></i>
+        
+        <div class="prompt save-prompt" ng-show="showSavePrompt">Save successful!</div>
+        <div class="prompt help-prompt" ng-show="showHelpPrompt">Press Enter to add more products.</div>
         
         <!--jQuery-->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>

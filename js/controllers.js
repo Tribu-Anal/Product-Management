@@ -12,7 +12,7 @@ app.controller('editmodeController', ['$scope', function($scope) {
     };
 }]);
 
-app.controller('ProductCtrl', [ '$scope', 'Product', ($scope, Product) => {
+app.controller('ProductCtrl', [ '$scope', 'Product', '$timeout', ($scope, Product, $timeout) => {
     $scope.products = Product.query( () => {
         
         let genId = () => {
@@ -33,8 +33,23 @@ app.controller('ProductCtrl', [ '$scope', 'Product', ($scope, Product) => {
         };
     });
     
-    $scope.showPrompt = false;
+    $scope.showSavePrompt = false;
+    $scope.showHelpPrompt = false;
     $scope.editMode = false;
+    
+    $scope.triggerSavePrompt = () => {
+        $scope.showSavePrompt = true;
+        $timeout(() => {
+            $scope.showSavePrompt = false;
+        }, 2000);
+    }; 
+    
+    $scope.triggerHelpPrompt = () => {
+        $scope.showHelpPrompt = true;
+        $timeout(() => {
+            $scope.showHelpPrompt = false;
+        }, 3500);
+    };
     
     $scope.saveProducts = () => {
         Product.save($scope.products);

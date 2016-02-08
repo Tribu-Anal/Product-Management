@@ -9,41 +9,23 @@
         <!--Bootstrap Styles-->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
         
-        
         <!--Bootstrap Theme-->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
         
-
+        <!--Google Fonts-->
+        <link href='https://fonts.googleapis.com/css?family=Roboto:400,700|Ubuntu:400,700|Candal|Nunito:400,700' rel='stylesheet' type='text/css'>
+        
         <link rel="stylesheet" href="css/style.css">
-        
-          <!--jQuery-->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-        
-        <!--Bootstrap js-->
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-        
-        <!--Angular-->
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
-        
-        <!--Angular animate module-->
-        <script src="js/angular-animate.js"></script>
-        
-        <!--Angular resource module-->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular-resource.min.js"></script>
-        
-        <script src="js/app.js"></script>
-        <script src="js/services.js"></script>
-        <script src="js/controllers.js"></script>
-        <script src="js/directives.js"></script>
     </head>
     <body ng-app="ProductsApp" ng-controller="ProductCtrl">
         
         <!--Page Content-->
         <div class="row full-height">
-            <div class="col-lg-4 col-lg-offset-4">
+            <div class="col-lg-4 col-md-6 col-sm-7 col-xs-12 
+                        col-lg-offset-4 col-md-offset-3 col-sm-offset-3">
                 <div class="well">
                     <div id="maintitle" align="center">
-                        <strong>Productos</strong>
+                        <strong>Products</strong>
                     </div>
                 </div>
 
@@ -57,40 +39,63 @@
                             </li>
                             <li class="col-xs-10">
                                 <div class="pull-left">
-                                    <strong> Nombre </strong>
+                                    <strong> Name </strong>
                                 </div>
                             </li>
                             <!--If you want to add more products, make sure it goes here! :^)-->
-                            <div ng-repeat="product in products">
-                                <li class="col-xs-2">
+                            <div id="prods" ng-repeat="product in products">
+                                <li class="col-xs-2" ng-click="edit(product)">
                                     <div class="list-group-item pull-left">
                                         <strong> {{product.id}} </strong>
                                     </div>
                                 </li>
                                 <li class="active col-xs-10">
-                                    <a ng-click="edit(product)" ng-hide="product.editMode" id="item" class="list-group-item">{{product.name}}
+                                    <a href="#" ng-click="edit(product)" ng-hide="product.editMode" id="item" class="list-group-item">{{product.name}}
                                         <div class="col-xs-1 pull-right">
                                             <button class="trashcan btn btn-info btn-xs" type="button">
                                                 <i class="glyphicon glyphicon-trash" ng-click="delete($index)"></i>
                                             </button>
                                         </div>
                                     </a>
-                                    <inplace-editing edit="product" class="col-xs-10"></inplace-editing>
                                 </li>
+                                <inplace-editing edit="product"></inplace-editing>
                             </div>
 
                         </ul>
                     </div>
                 </div>
                 <div class="input-group">
-                    <input type="text" placeholder="Ingrese Producto..." ng-model="name" ng-keyup="$event.which === 13 && insert(name)"/>
+                    <input type="text" placeholder="Enter Product..." ng-model="name" ng-keyup="$event.which === 13 && insert(name)" focus="true"/>
                     <!--If button wanted <button class="btn btn-default" type="button">Insertar</button> -->
                 </div>
 
             </div>
         </div>
         
-        <i id="save-icon" class="glyphicon glyphicon-floppy-disk" ng-click="saveProducts(); showPrompt = true;"></i>
-       
+        <i class="glyphicon glyphicon-floppy-disk extra-icon save" ng-click="saveProducts(); triggerSavePrompt();"></i>
+        <i class="glyphicon glyphicon-question-sign extra-icon help" ng-click="triggerHelpPrompt()"></i>
+        
+        <div class="prompt save-prompt" ng-show="showSavePrompt" ng-cloak>Save successful!</div>
+        <div class="prompt help-prompt" ng-show="showHelpPrompt" ng-cloak>Press Enter to add more products.</div>
+        
+        <!--jQuery-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+        <!--Bootstrap js-->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+        <!--Angular-->
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+
+        <!--Angular animate module-->
+        <script src="js/angular-animate.js"></script>
+
+        <!--Angular resource module-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular-resource.min.js"></script>
+
+        <script src="js/app.js"></script>
+        <script src="js/services.js"></script>
+        <script src="js/controllers.js"></script>
+        <script src="js/directives.js"></script>
     </body>
 </html>

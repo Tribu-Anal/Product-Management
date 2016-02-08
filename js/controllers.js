@@ -7,12 +7,12 @@ app.controller('editmodeController', ['$scope', function($scope) {
     
     ctrl.enterEvent = function(event) {
             if (event.which === 13){
-                $scope.$parent.product.editMode = false; 
+                $scope.$parent.product.editMode = $scope.$parent.product.name.length === 0; 
             }
     };
 }]);
 
-app.controller('ProductCtrl', [ '$scope', 'Product', ($scope, Product) => {
+app.controller('ProductCtrl', [ '$scope', 'Product', '$timeout', ($scope, Product, $timeout) => {
     $scope.products = Product.query( () => {
         
         let genId = () => {
@@ -25,19 +25,34 @@ app.controller('ProductCtrl', [ '$scope', 'Product', ($scope, Product) => {
         };
         
         $scope.insert = function(name) {
+            if (!name || name.length === 0) return;
+            
             $scope.products.push( { id: $scope.products.length > 0 ? genId() : 1, name: name } );
-        };
-        
-        $scope.updateProduct = (name, $index) => {
-            $scope.products[$index].name = name;
+            
+            $scope.name = "";
         };
     });
     
-    $scope.showPrompt = false;
+    $scope.showSavePrompt = false;
+    $scope.showHelpPrompt = false;
     $scope.editMode = false;
     
+    $scope.triggerSavePrompt = () => {
+        $scope.showSavePrompt = true;
+        $timeout(() => {
+            $scope.showSavePrompt = false;
+        }, 2000);
+    }; 
+    
+    $scope.triggerHelpPrompt = () => {
+        $scope.showHelpPrompt = true;
+        $timeout(() => {
+            $scope.showHelpPrompt = false;
+        }, 3500);
+    };
+    
     $scope.saveProducts = () => {
-        Product.save($scope.products);
+        Product.save($scope.products, $scope.triggerSavePrompt);
     };
 
     $scope.delete = function(index) {
@@ -46,6 +61,5 @@ app.controller('ProductCtrl', [ '$scope', 'Product', ($scope, Product) => {
     
     $scope.edit=function(producto){
         producto.editMode = true;
-        $('#'+producto.id+' :input').focus();
     };
 }]);

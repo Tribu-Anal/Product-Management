@@ -15,6 +15,26 @@
         
 
         <link rel="stylesheet" href="css/style.css">
+        
+          <!--jQuery-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+        
+        <!--Bootstrap js-->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+        
+        <!--Angular-->
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+        
+        <!--Angular animate module-->
+        <script src="js/angular-animate.js"></script>
+        
+        <!--Angular resource module-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular-resource.min.js"></script>
+        
+        <script src="js/app.js"></script>
+        <script src="js/services.js"></script>
+        <script src="js/controllers.js"></script>
+        <script src="js/directives.js"></script>
     </head>
     <body ng-app="ProductsApp" ng-controller="ProductCtrl">
         
@@ -48,14 +68,14 @@
                                     </div>
                                 </li>
                                 <li class="active col-xs-10">
-                                    <a href="#" id="item" class="list-group-item">{{product.name}}
+                                    <a ng-click="edit(product)" ng-hide="product.editMode" id="item" class="list-group-item">{{product.name}}
                                         <div class="col-xs-1 pull-right">
                                             <button class="trashcan btn btn-info btn-xs" type="button">
                                                 <i class="glyphicon glyphicon-trash" ng-click="delete($index)"></i>
                                             </button>
                                         </div>
                                     </a>
-<!--                                    <input type="text" ng-model="name" ng-show="editMode" ng-keyup="$event.which === 13 && updateProduct(name, $index) && editMode = false;"  ng-blur="editMode = false;" ng-cloak>-->
+                                    <inplace-editing edit="product" class="col-xs-10"></inplace-editing>
                                 </li>
                             </div>
 
@@ -71,25 +91,6 @@
         </div>
         
         <i id="save-icon" class="glyphicon glyphicon-floppy-disk" ng-click="saveProducts(); showPrompt = true;"></i>
-        
-        <!--jQuery-->
-        <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
-        
-        <!--Bootstrap js-->
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-        
-        <!--Angular-->
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
-        
-        <!--Angular animate module-->
-        <script src="js/angular-animate.js"></script>
-        
-        <!--Angular resource module-->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular-resource.min.js"></script>
-        
-        <script src="js/app.js"></script>
-        <script src="js/services.js"></script>
-        <script src="js/controllers.js"></script>
-        <script src="js/directives.js"></script>
+       
     </body>
 </html>

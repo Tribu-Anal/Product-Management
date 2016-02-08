@@ -5,10 +5,11 @@ var app = angular.module('ProductsApp');
 app.controller('editmodeController', ['$scope', function($scope) {
     var ctrl = this;
     
-    ctrl.save = function () {
-        $scope.$parent.main.data.visible = false;
+    ctrl.enterEvent = function(event) {
+            if (event.which === 13){
+                $scope.$parent.product.editMode = false; 
+            }
     };
-    
 }]);
 
 app.controller('ProductCtrl', [ '$scope', 'Product', ($scope, Product) => {
@@ -41,5 +42,10 @@ app.controller('ProductCtrl', [ '$scope', 'Product', ($scope, Product) => {
 
     $scope.delete = function(index) {
         $scope.products.splice(index, 1);  
+    };
+    
+    $scope.edit=function(producto){
+        producto.editMode = true;
+        $('#'+producto.id+' :input').focus();
     };
 }]);

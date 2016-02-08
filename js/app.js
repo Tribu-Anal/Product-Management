@@ -1,1 +1,1 @@
-angular.module('ProductsApp', ['ngAnimate']);
+angular.module('ProductsApp', ['ngAnimate', 'ngResource']);

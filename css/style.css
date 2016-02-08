@@ -1,6 +1,21 @@
 html, body, .full-height {
   height: 100%;
 }
+
+#save-icon {
+    position: absolute;
+    font-size: 50px;
+    opacity: 0.2;
+    margin-top: 20px;
+    right: 1.5%;
+    cursor: pointer;
+    transition: all 0.4s;
+}
+
+#save-icon:hover {
+    opacity: 1;
+}
+
 input[type="text"] {
   height: 40px;
   color: #fff;
@@ -93,4 +108,5 @@ input[type="text"]::-webkit-input-placeholder {
 }
 body {
   background: #0C83AB;
+    overflow: hidden;
 }

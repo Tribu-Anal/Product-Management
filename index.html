@@ -46,15 +46,15 @@
                                     </div>
                                 </li>
                                 <li class="active col-xs-10">
-                                    <a ng-click="edit(product)" ng-hide="product.editMode" id="item" class="list-group-item">{{product.name}}
+                                    <a href="#" ng-click="edit(product)" ng-hide="product.editMode" id="item" class="list-group-item">{{product.name}}
                                         <div class="col-xs-1 pull-right">
                                             <button class="trashcan btn btn-info btn-xs" type="button">
                                                 <i class="glyphicon glyphicon-trash" ng-click="delete($index)"></i>
                                             </button>
                                         </div>
                                     </a>
-                                    <inplace-editing edit="product" class="col-xs-10"></inplace-editing>
                                 </li>
+                                <inplace-editing edit="product"></inplace-editing>
                             </div>
 
                         </ul>

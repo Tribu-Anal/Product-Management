@@ -7,6 +7,7 @@ app.directive('inplaceEditing', function() {
             edit:'='
         },
         controller : 'editmodeController as editCtrl',
-        template: "<div ng-show='edit.editMode'> <input type='text'  ng-model='edit.name' ng-model-options='{ getterSetter: true }' autofocus> <input type='button' ng-click='editCtrl.save()' value='Save'></div>"
+        template: "<div ng-show='edit.editMode'> <input type='text' id='{{edit.id}}'  ng-model='edit.name' ng-model-options='{ getterSetter: true }' ng-keypress='editCtrl.enterEvent($event)'></div>"
+        
     }
 });

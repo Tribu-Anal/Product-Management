@@ -6,6 +6,30 @@ html, body, .full-height {
     border: none;
 }
 
+.prompt {
+    position: absolute;
+    top: 80%;
+    border-radius: 10px;
+    font-size: 24px;
+    text-align: center;
+    font-weight: bolder;
+    background: rgba(19, 9, 69, 0.7);
+    color: #fff;
+    height: 80px;
+    padding-top: 20px;
+/*    box-shadow: 0 0 5px #111;*/
+}
+
+.save-prompt {
+    left: 41%;
+    width: 250px;
+}
+
+.help-prompt {
+    left: 31%;
+    width: 500px;
+}
+
 .extra-icon {
     position: absolute;
     font-size: 50px;
@@ -46,10 +70,12 @@ input[type="text"] {
   font-size: 20px;
 }
 .btn.btn-info.trashcan{
-  background: #FF6C60;
+    background: rgba(19, 9, 69, 0.7);
+    font-size: 18px;
+    margin-top: -5px;
 }
 .btn.btn-info.trashcan:hover{
-  background: #FF6C60;
+    background:  rgba(19, 9, 69, 0.7);
 }
 .btn.btn-info,
 .btn.btn-info:focus {
@@ -127,4 +153,5 @@ input[type="text"]::-webkit-input-placeholder {
 body {
   background: #0C83AB;
     overflow: hidden;
+    font-family: 'Nunito', sans-serif;
 }

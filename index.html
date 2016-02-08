@@ -24,7 +24,7 @@
             <div class="col-lg-4 col-lg-offset-4">
                 <div class="well">
                     <div id="maintitle" align="center">
-                        <strong>Productos</strong>
+                        <strong>Products</strong>
                     </div>
                 </div>
 
@@ -38,11 +38,11 @@
                             </li>
                             <li class="col-xs-10">
                                 <div class="pull-left">
-                                    <strong> Nombre </strong>
+                                    <strong> Name </strong>
                                 </div>
                             </li>
                             <!--If you want to add more products, make sure it goes here! :^)-->
-                            <div ng-repeat="product in products">
+                            <div id="prods" ng-repeat="product in products">
                                 <li class="col-xs-2" ng-click="edit(product)">
                                     <div class="list-group-item pull-left">
                                         <strong> {{product.id}} </strong>
@@ -64,7 +64,7 @@
                     </div>
                 </div>
                 <div class="input-group">
-                    <input type="text" placeholder="Ingrese Producto..." ng-model="name" ng-keyup="$event.which === 13 && insert(name)" focus="true"/>
+                    <input type="text" placeholder="Enter Product..." ng-model="name" ng-keyup="$event.which === 13 && insert(name)" focus="true"/>
                     <!--If button wanted <button class="btn btn-default" type="button">Insertar</button> -->
                 </div>
 
@@ -74,8 +74,8 @@
         <i class="glyphicon glyphicon-floppy-disk extra-icon save" ng-click="saveProducts(); triggerSavePrompt();"></i>
         <i class="glyphicon glyphicon-question-sign extra-icon help" ng-click="triggerHelpPrompt()"></i>
         
-        <div class="prompt save-prompt" ng-show="showSavePrompt">Save successful!</div>
-        <div class="prompt help-prompt" ng-show="showHelpPrompt">Press Enter to add more products.</div>
+        <div class="prompt save-prompt" ng-show="showSavePrompt" ng-cloak>Save successful!</div>
+        <div class="prompt help-prompt" ng-show="showHelpPrompt" ng-cloak>Press Enter to add more products.</div>
         
         <!--jQuery-->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>

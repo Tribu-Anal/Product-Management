@@ -7,7 +7,7 @@ app.controller('editmodeController', ['$scope', function($scope) {
     
     ctrl.enterEvent = function(event) {
             if (event.which === 13){
-                $scope.$parent.product.editMode = false; 
+                $scope.$parent.product.editMode = $scope.$parent.product.name.length === 0; 
             }
     };
 }]);
@@ -25,13 +25,11 @@ app.controller('ProductCtrl', [ '$scope', 'Product', ($scope, Product) => {
         };
         
         $scope.insert = function(name) {
+            if (!name || name.length === 0) return;
+            
             $scope.products.push( { id: $scope.products.length > 0 ? genId() : 1, name: name } );
             
             $scope.name = "";
-        };
-        
-        $scope.updateProduct = (name, $index) => {
-            $scope.products[$index].name = name;
         };
     });
     

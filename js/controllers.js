@@ -26,6 +26,8 @@ app.controller('ProductCtrl', [ '$scope', 'Product', ($scope, Product) => {
         
         $scope.insert = function(name) {
             $scope.products.push( { id: $scope.products.length > 0 ? genId() : 1, name: name } );
+            
+            $scope.name = "";
         };
         
         $scope.updateProduct = (name, $index) => {
